@@ -36,7 +36,7 @@ export const battleResolvers: IResolvers = {
     }
 };
 
-function getRandomIndices(length: number): number[] {
+export function getRandomIndices(length: number): number[] {
     const index1 = Math.floor(Math.random() * length);
     let index2 = Math.floor(Math.random() * length);
     while (index2 === index1) {
@@ -45,7 +45,7 @@ function getRandomIndices(length: number): number[] {
     return [index1, index2];
 }
 
-function determineWinner(entity1: Person | Starship, entity2: Person | Starship, resourceType: ResourceType): Person | Starship | null {
+export function determineWinner(entity1: Person | Starship, entity2: Person | Starship, resourceType: ResourceType): Person | Starship | null {
     if (resourceType === ResourceType.PERSON) {
         const person1 = entity1 as Person;
         const person2 = entity2 as Person;
@@ -61,7 +61,7 @@ function determineWinner(entity1: Person | Starship, entity2: Person | Starship,
     }
 }
 
-function parseCrewSize(crew: string): number {
+export function parseCrewSize(crew: string): number {
     if (crew && crew.includes('-')) {
         return Math.max(...crew.split('-').map(Number));
     }
